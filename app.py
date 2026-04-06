@@ -1,8 +1,18 @@
+import os
 from supabase import create_client
 from flask import Flask, jsonify, request
+from dotenv import load_dotenv
 
-url = "https://jmbldievxkngthzzxgdr.supabase.co"
-key = "sb_publishable_9HcCXAw6jSQzUwlgT8DoRg_erbHgbvb"
+# Carrega as variáveis do arquivo .env
+load_dotenv()
+
+# Pega as variáveis de ambiente
+url = os.getenv("SUPABASE_URL")
+key = os.getenv("SUPABASE_KEY")
+
+# Verifica se as variáveis foram carregadas corretamente
+if not url or not key:
+    raise ValueError("Erro: SUPABASE_URL e SUPABASE_KEY devem estar configuradas no arquivo .env")
 
 supabase = create_client(url, key)
 
