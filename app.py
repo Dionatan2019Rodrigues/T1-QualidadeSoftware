@@ -1,3 +1,4 @@
+#Desenvolvido por Dionatan Rodrigues e Guilherme da Silva
 import os
 from supabase import create_client
 from flask import Flask, jsonify, request
